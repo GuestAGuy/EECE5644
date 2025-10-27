@@ -5,7 +5,9 @@ from sklearn.metrics import roc_curve, auc
 import sys
 import os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+code_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../Code'))
+if code_path not in sys.path:
+    sys.path.insert(0, code_path)
 
 from Generate_Data_From_GMM import GenerateDataFromGMM
 from Optimal_Bayes_Classifier import OptimalBayesClassifier

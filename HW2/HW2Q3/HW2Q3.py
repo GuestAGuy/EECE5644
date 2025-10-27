@@ -1,5 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
+import os
+code_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../Code'))
+if code_path not in sys.path:
+    sys.path.insert(0, code_path)
+    
 from Vehicle_Localization_Map import VehicleLocalizationMAP
 
 def main():
