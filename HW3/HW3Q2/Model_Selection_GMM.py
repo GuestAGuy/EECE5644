@@ -204,7 +204,7 @@ class Question2temp:
                 print("  Model selection performs poorly")
     
     def plot_results(self):
-        """Create comprehensive visualization"""
+        """Create comprehensive visualization and save as PNG"""
         fig, axes = plt.subplots(2, 2, figsize=(15, 12))
         
         # Plot 1: Selection rates for each sample size
@@ -223,7 +223,7 @@ class Question2temp:
             for bar, rate in zip(bars, rates_values):
                 if rate > 0.05:
                     axes[0,0].text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.01,
-                                  f'{rate:.2f}', ha='center', va='bottom', fontsize=8)
+                                f'{rate:.2f}', ha='center', va='bottom', fontsize=8)
         
         axes[0,0].set_xlabel('Number of Components (K)')
         axes[0,0].set_ylabel('Selection Rate')
@@ -249,8 +249,8 @@ class Question2temp:
         # Add value labels
         for i, (x, y) in enumerate(zip(sample_numbers, correct_rates)):
             axes[0,1].annotate(f'{y:.3f}', (x, y), xytext=(5, 5), 
-                             textcoords='offset points', fontsize=10,
-                             bbox=dict(boxstyle='round,pad=0.3', facecolor='yellow', alpha=0.7))
+                            textcoords='offset points', fontsize=10,
+                            bbox=dict(boxstyle='round,pad=0.3', facecolor='yellow', alpha=0.7))
         
         # Plot 3: Error analysis (underfitting/overfitting)
         underfitting_rates = {}
@@ -267,11 +267,11 @@ class Question2temp:
         width = 0.25
         
         axes[1,0].bar(x - width, [underfitting_rates[size] for size in sample_sizes], 
-                     width, label='Underfitting (K<4)', alpha=0.7, color='red')
+                    width, label='Underfitting (K<4)', alpha=0.7, color='red')
         axes[1,0].bar(x, [correct_rates[size] for size in sample_sizes], 
-                     width, label='Correct (K=4)', alpha=0.7, color='green')
+                    width, label='Correct (K=4)', alpha=0.7, color='green')
         axes[1,0].bar(x + width, [overfitting_rates[size] for size in sample_sizes], 
-                     width, label='Overfitting (K>4)', alpha=0.7, color='blue')
+                    width, label='Overfitting (K>4)', alpha=0.7, color='blue')
         
         axes[1,0].set_xlabel('Sample Size')
         axes[1,0].set_ylabel('Rate')
@@ -305,7 +305,9 @@ class Question2temp:
         
         plt.colorbar(im, ax=axes[1,1], label='Selection Rate')
         
+        # Adjust layout and save the figure
         plt.tight_layout()
+        plt.savefig('gmm_selection_rates.png', dpi=300, bbox_inches='tight')
         plt.show()
         
         return fig
