@@ -46,7 +46,7 @@ def main():
     print(f"ML Validation ASE: {ase_ml:.6f}")
     
     # Maximum A Posteriori Estimation
-    gamma_values = np.logspace(-3, 3, 50)
+    gamma_values = np.logspace(-6, 6, 50)
     ase_map_values = []
     weight_norms = []
     

@@ -143,7 +143,7 @@ class Question1Solution:
         print("\nLogistic Regression Performance:")
         print(f"{'Model':<25} {'N=50':<10} {'N=500':<10} {'N=5000':<10}")
         print("-"*55)
-        print(f"{'Optimal Bayes':<25} {'-':<10} {'-':<10} {optimal_error:.4f}")
+        print(f"{'Optimal Bayes':<25} {optimal_error:.4f}    {optimal_error:.4f}    {optimal_error:.4f}")
         
         for feature_type in ['linear', 'quadratic']:
             for size in [50, 500, 5000]:
